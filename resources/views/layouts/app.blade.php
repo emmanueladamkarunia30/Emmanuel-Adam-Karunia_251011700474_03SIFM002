@@ -1,104 +1,22 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{{ $title ?? 'PRODI SI UNPAM' }}</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>UNPAM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 
-<body style="margin: 0; background-color: #f8f9fa;">
-
-    <!-- NAVBAR -->
-    <nav style="
-        background-color: #0d6efd;
-        padding: 15px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    ">
-
-        <div style="
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        ">
-
-            <!-- LOGO / NAMA -->
-            <a href="/" style="
-                color: white;
-                text-decoration: none;
-                font-size: 20px;
-                font-weight: bold;
-            ">
-                PRODI SI UNPAM
-            </a>
-
-            <!-- MENU -->
-            <div>
-
-                <a href="/" style="
-                    color: white;
-                    text-decoration: none;
-                    margin-left: 25px;
-                ">
-                    Home
-                </a>
-
-                <a href="/mahasiswa" style="
-                    color: white;
-                    text-decoration: none;
-                    margin-left: 25px;
-                ">
-                    Profile
-                </a>
-
-                <a href="/project" style="
-                    color: white;
-                    text-decoration: none;
-                    margin-left: 25px;
-                ">
-                    Project
-                </a>
-
-                <a href="/about" style="
-                    color: white;
-                    text-decoration: none;
-                    margin-left: 25px;
-                ">
-                    About
-                </a>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-
-    <!-- ISI HALAMAN -->
-    @yield('content')
-
-
-    <!-- FOOTER -->
-    <footer style="
-        text-align: center;
-        padding: 20px;
-        margin-top: 80px;
-        color: #777;
-        background-color: white;
-    ">
-
-        <small>
-            &copy; 2026 All rights reserved.
-        </small>
-
-    </footer>
-
+<body class="bg-light d-flex flex-column min-vh-100">
+    <header>
+        @include('partials.header');
+    </header>
+    <div class="container flex-grow-1">
+        @yield('content')
+    </div>
+    @include('partials.footer');
 </body>
 
 </html>

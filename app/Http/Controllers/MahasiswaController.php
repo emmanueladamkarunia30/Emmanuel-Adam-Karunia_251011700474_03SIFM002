@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class MahasiswaController extends Controller
 {
     public function index()
     {
         $mahasiswa = [
-            'nama' => 'emmanuel',
             'nim' => '251011700474',
-            'email' => 'emmanuel0909@gmail.com',
+            'nama' => 'emmanuel',
             'prodi' => 'Sistem Informasi',
-            'status' => 'Aktif'
+            'kampus' => 'Universitas Pamulang',
+            'email' => 'emmanuel@gmail.com',
+            'status' => 'Aktif',
         ];
 
-        return view('mahasiswa', compact('mahasiswa'));
+        return view('page.profile', compact('mahasiswa'));
     }
 }
