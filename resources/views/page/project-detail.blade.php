@@ -12,7 +12,7 @@
 
     <div class="col-md-7">
         <div class="card h-100 shadow-sm border-0">
-            <img src="{{ asset('images/' . $project->image) }}" alt="Project Image" class="img-fluid h-100 w-100"
+            <img src="{{ $project->image_url }}" alt="Project Image" class="img-fluid h-100 w-100"
                 style="min-height: 300px; object-fit: cover;">
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="card-body p-4">
             <div class="mb-2">
                 <span
-                    class="badge {{ $project->status == 'selesai' ? 'bg-success' : 'bg-danger' }} mb-2">{{ $project->status }}</span>
+                    class="badge {{ strtolower($project->status) == 'selesai' ? 'bg-success' : 'bg-danger' }} mb-2">{{ $project->status }}</span>
             </div>
             <div class="mb-2">
                 <h2 class="card-title">{{ $project->title }}</h2>

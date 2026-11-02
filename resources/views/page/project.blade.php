@@ -6,7 +6,6 @@
 
 <div class="container py-4">
 
-```
 <div class="mb-4 text-center">
     <h2 class="fw-bold">Portfolio Project</h2>
     <p class="text-muted">
@@ -23,7 +22,7 @@
             <div class="card h-100 w-100 shadow-sm border-0">
 
                 <img
-                    src="{{ asset('images/' . $project->image) }}"
+                    src="{{ $project->image_url }}"
                     alt="{{ $project->title }}"
                     class="card-img-top"
                     style="height: 200px; object-fit: cover;"
@@ -81,7 +80,6 @@
 <div class="d-flex justify-content-center mt-4">
     {{ $projects->links('pagination::bootstrap-5') }}
 </div>
-```
 
 </div>
 

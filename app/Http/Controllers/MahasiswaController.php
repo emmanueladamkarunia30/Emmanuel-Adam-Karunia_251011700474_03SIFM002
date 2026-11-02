@@ -10,7 +10,7 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = [
             'nim' => '251011700474',
-            'nama' => 'emmanuel',
+            'nama' => 'Emmanuel Adam Karunia',
             'prodi' => 'Sistem Informasi',
             'kampus' => 'Universitas Pamulang',
             'email' => 'emmanuel@gmail.com',

@@ -7,15 +7,12 @@ use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
         $projects = [
             [
                 'title' => 'Sistem Informasi Akademik',
+                'kategori' => 'Software',
                 'description' => 'Aplikasi berbasis web untuk pengelolaan data mahasiswa, jadwal kuliah dan nilai perkuliahan',
                 'teknologi' => 'Laravel & bootstrap',
                 'image' => 'project1.jpg',
@@ -23,6 +20,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'E-Commerce SEO Optimization',
+                'kategori' => 'Software',
                 'description' => 'Aplikasi optimalisasi struktur heading dan indexing halaman web toko online.',
                 'teknologi' => 'PHP & Google Search Console',
                 'image' => 'project2.jpg',
@@ -30,6 +28,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Redesign Cover & Branding',
+                'kategori' => 'Software',
                 'description' => 'Perancangan elemen grafis personal branding dan desain sampul buku Rekayasa Web.',
                 'teknologi' => 'Figma & Canva',
                 'image' => 'project3.jpg',
@@ -37,6 +36,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Portal Berita Mahasiswa',
+                'kategori' => 'Software',
                 'description' => 'Platform publikasi artikel dan kegiatan kampus berbasis web interaktif.',
                 'teknologi' => 'Laravel & Bootstrap',
                 'image' => 'project4.jpg',
@@ -44,6 +44,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Aplikasi E-Perpustakaan',
+                'kategori' => 'Software',
                 'description' => 'Sistem manajemen peminjaman buku digital dan pengarsipan katalog online.',
                 'teknologi' => 'CodeIgniter & Bootstrap',
                 'image' => 'project5.jpg',
@@ -51,6 +52,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Dashboard Landing Page UMKM',
+                'kategori' => 'Software',
                 'description' => 'Pembuatan profil usaha dan katalog produk lokal berbasis responsif mobile.',
                 'teknologi' => 'HTML, CSS, JS & Bootstrap',
                 'image' => 'project6.jpg',
@@ -58,6 +60,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Sistem Kasir (POS) Toko',
+                'kategori' => 'Software',
                 'description' => 'Aplikasi pencatatan transaksi penjualan dan manajemen stok barang harian.',
                 'teknologi' => 'Java Swing & MySQL',
                 'image' => 'project7.jpg',
@@ -65,6 +68,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Audit & Monitoring SEO Web',
+                'kategori' => 'Software',
                 'description' => 'Analisis performa halaman web dan peningkatan lalu lintas pencarian organik.',
                 'teknologi' => 'Ahrefs & Google Analytics',
                 'image' => 'project8.jpg',
@@ -72,6 +76,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Desain Prototipe Mobile App',
+                'kategori' => 'Software',
                 'description' => 'Perancangan wireframe dan UI kit untuk aplikasi pengingat jadwal kuliah.',
                 'teknologi' => 'Figma & Adobe XD',
                 'image' => 'project9.jpg',
@@ -79,6 +84,7 @@ class ProjectSeeder extends Seeder
             ],
             [
                 'title' => 'Sistem Inventaris Kampus',
+                'kategori' => 'Software',
                 'description' => 'Pengelolaan sarana dan prasarana barang inventaris di lingkungan laboratorium.',
                 'teknologi' => 'Laravel & Livewire',
                 'image' => 'project10.jpg',
