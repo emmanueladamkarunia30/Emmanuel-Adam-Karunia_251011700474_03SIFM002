@@ -63,6 +63,14 @@
         color: white;
     }
 
+    .sidebar-user {
+        padding: 12px 16px;
+        margin-top: 10px;
+        border-top: 1px solid #343a40;
+        color: #adb5bd;
+        font-size: 12px;
+    }
+
     /* MAIN CONTENT */
     .admin-content {
         display: block;
@@ -185,12 +193,23 @@
         </li>
 
         <li class="nav-item">
-            <a href="{{ route('admin.home') }}" class="nav-link active">
+            <a href="{{ route('admin.home') }}"
+               class="nav-link {{ request()->routeIs('admin.home', 'admin.create', 'admin.edit') ? 'active' : '' }}">
                 Projects
             </a>
         </li>
 
     </ul>
+
+    <div class="sidebar-user">
+        <div class="fw-bold text-white text-truncate">{{ auth()->user()->name }}</div>
+        <div class="mb-2">{{ auth()->user()->role_label }}</div>
+
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-outline-light btn-sm w-100">Logout</button>
+        </form>
+    </div>
 
 </aside>
 
@@ -211,6 +230,13 @@
         @yield('header-action')
 
     </div>
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
 
     <!-- CONTENT -->
     @yield('content')

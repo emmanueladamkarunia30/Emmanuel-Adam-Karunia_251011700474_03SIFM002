@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,6 +11,16 @@ class AdminController extends Controller
 {
     // DASHBOARD
     public function index(Request $request)
+    {
+        $query = $this->filteredQuery($request);
+
+        $projects = $query->latest()->paginate(15);
+
+        return view('admin.index', compact('projects'));
+    }
+
+    // QUERY FILTER + SEARCH (dipakai dashboard dan export PDF)
+    private function filteredQuery(Request $request)
     {
         $query = Project::query();
 
@@ -30,9 +41,20 @@ class AdminController extends Controller
             });
         }
 
-        $projects = $query->latest()->paginate(15);
+        return $query;
+    }
 
-        return view('admin.index', compact('projects'));
+    // EXPORT PDF
+    public function exportPdf(Request $request)
+    {
+        $projects = $this->filteredQuery($request)->latest()->get();
+
+        $pdf = Pdf::loadView('admin.pdf', [
+            'projects' => $projects,
+            'tanggal' => now()->format('d-m-Y'),
+        ])->setPaper('a4', 'portrait');
+
+        return $pdf->stream('laporan-data-project.pdf');
     }
 
     // FORM TAMBAH DATA

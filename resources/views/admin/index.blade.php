@@ -5,9 +5,17 @@
 @section('subtitle', 'Halaman Kelola Projects')
 
 @section('header-action')
-<a href="{{ route('admin.create') }}" class="btn btn-primary btn-sm px-3">
-Tambah Data
-</a>
+<div class="d-flex gap-2">
+    <a href="{{ route('admin.projects.pdf', request()->only(['kategori', 'search'])) }}"
+       target="_blank"
+       class="btn btn-dark btn-sm px-3">
+        Export PDF
+    </a>
+
+    <a href="{{ route('admin.create') }}" class="btn btn-primary btn-sm px-3">
+        Tambah Data
+    </a>
+</div>
 @endsection
 
 @section('content')
@@ -134,6 +142,7 @@ Tambah Data
                                 Edit
                             </a>
 
+                            @if(auth()->user()->isAdmin())
                             <form action="{{ route('admin.destroy', $project->id) }}"
                                   method="POST"
                                   onsubmit="return confirm('Yakin ingin menghapus data?')">
@@ -146,6 +155,7 @@ Tambah Data
                                 </button>
 
                             </form>
+                            @endif
 
                         </div>
                     </td>

@@ -40,4 +40,27 @@ class Project extends Model
 
         return asset('images/' . $this->image);
     }
+
+    /**
+     * Gambar untuk PDF (dompdf): diubah ke base64 dari file lokal,
+     * karena dompdf tidak bisa memuat URL asset() dengan andal.
+     */
+    public function getPdfImageAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        $path = str_starts_with($this->image, 'projects/')
+            ? storage_path('app/public/' . $this->image)
+            : public_path('images/' . $this->image);
+
+        if (! is_file($path)) {
+            return null;
+        }
+
+        $mime = mime_content_type($path) ?: 'image/jpeg';
+
+        return 'data:' . $mime . ';base64,' . base64_encode(file_get_contents($path));
+    }
 }

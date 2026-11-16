@@ -18,6 +18,13 @@
                     <li class="nav-item">
                         <a href="{{ url('/about') }}" class="nav-link{{ Request::is('/about') ? 'active fw-bold' : '' }}">About</a>
                     </li>
+                    <li class="nav-item">
+                        @auth
+                            <a href="{{ route('admin.home') }}" class="nav-link">Admin</a>
+                        @else
+                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        @endauth
+                    </li>
                 </ul>
             </div>
         </div>
