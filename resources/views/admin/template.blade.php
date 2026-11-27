@@ -5,6 +5,9 @@
 <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>@yield('title', 'Admin Dashboard')</title>
+<meta name="api-token" content="{{ session('api_token') }}">
+<link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -177,6 +180,12 @@
     }
 </style>
 
+<script src="{{ asset('DataTables/jquery-3.6.1.js') }}"></script>
+<script src="{{ asset('DataTables/datatables.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script>
+    const API_TOKEN = @json(session('api_token'));
+</script>
 </head>
 
 <body>
@@ -199,6 +208,14 @@
             </a>
         </li>
 
+    @if(auth()->user()->isAdmin())
+        <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}"
+               class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                Users
+            </a>
+        </li>
+        @endif
     </ul>
 
     <div class="sidebar-user">

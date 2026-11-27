@@ -21,26 +21,39 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'username' => 'required|string',
+            'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
         if (Auth::attempt(
-            ['username' => $credentials['username'], 'password' => $credentials['password'], 'is_active' => true],
+            ['email' => $credentials['email'], 'password' => $credentials['password'], 'is_active' => true],
             $request->boolean('remember')
         )) {
             $request->session()->regenerate();
+
+            // Token API untuk halaman admin (dipakai DataTables lewat AJAX)
+            /** @var User $user */
+            $user = Auth::user();
+            $user->tokens()->where('name', 'web_admin_token')->delete();
+            $token = $user->createToken('web_admin_token')->plainTextToken;
+            session(['api_token' => $token]);
 
             return redirect()->intended(route('admin.home'));
         }
 
         return back()
-            ->withErrors(['username' => 'Username atau password salah, atau akun tidak aktif.'])
-            ->onlyInput('username');
+            ->withErrors(['email' => 'Email atau password salah, atau akun tidak aktif.'])
+            ->onlyInput('email');
     }
 
     public function logout(Request $request)
     {
+        if (Auth::check()) {
+            /** @var User $user */
+            $user = Auth::user();
+            $user->tokens()->where('name', 'web_admin_token')->delete();
+        }
+
         Auth::logout();
 
         $request->session()->invalidate();
